@@ -1,6 +1,6 @@
 import { Container } from "@/components/common/Container";
-import { EventBanner } from "@/components/home/EventBanner";
-import { AuthorHero } from "@/components/home/AuthorHero";
+import { EventBanner } from "@/components/home/EventBanner/EventBanner";
+import { AuthorHero } from "@/components/home/AuthorHero/AuthorHero";
 
 export const revalidate = 300;
 
