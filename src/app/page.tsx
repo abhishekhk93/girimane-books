@@ -1,4 +1,4 @@
-import { Container } from "@/components/common/Container";
+import { Container } from "@/components/common/Container/Container";
 import { EventBanner } from "@/components/home/EventBanner/EventBanner";
 import { AuthorHero } from "@/components/home/AuthorHero/AuthorHero";
 
