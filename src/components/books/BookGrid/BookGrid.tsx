@@ -1,21 +1,6 @@
 import { BookCard } from "../BookCard/BookCard";
 import styles from "./BookGrid.module.css";
-
-type Book = {
-  id: string;
-  title: string;
-  author: string;
-  price: number;
-  imageUrl: string;
-  href: string;
-  badge?: string;
-};
-
-type BookGridProps = {
-  books: Book[];
-  title?: string;
-  description?: string;
-};
+import { BookGridProps } from "./BookGrid.types";
 
 export function BookGrid({ books, title, description }: BookGridProps) {
   return (

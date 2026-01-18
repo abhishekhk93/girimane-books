@@ -1,12 +1,6 @@
 import Image from "next/image";
 import styles from "./AuthorHero.module.css";
-
-type AuthorHeroProps = {
-  name: string;
-  tagline: string;
-  description: string;
-  imgSrc: string;
-};
+import { AuthorHeroProps } from "./AuthorHero.types";
 
 export function AuthorHero({
   name,

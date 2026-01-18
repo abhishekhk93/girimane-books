@@ -1,16 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./BookCard.module.css";
-
-type BookCardProps = {
-  id: string;
-  title: string;
-  author: string;
-  price: number;
-  imageUrl: string;
-  href: string;
-  badge?: string;
-};
+import { BookCardProps } from "./BookCard.types";
 
 export function BookCard({
   id,

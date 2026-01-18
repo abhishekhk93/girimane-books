@@ -1,11 +1,5 @@
 import styles from "./FormCheckbox.module.css";
-
-type FormCheckboxProps = {
-    label: string;
-    name: string;
-    checked: boolean;
-    onChange: (checked: boolean) => void;
-};
+import { FormCheckboxProps } from "./FormCheckbox.types";
 
 export function FormCheckbox({
     label,

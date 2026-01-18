@@ -1,24 +1,6 @@
 import Image from "next/image";
 import styles from "./BookDetail.module.css";
-
-type Book = {
-  id: string;
-  title: string;
-  author: string;
-  price: number;
-  imageUrl: string;
-  href: string;
-  badge?: string;
-  description?: string;
-  isbn?: string;
-  pages?: number;
-  language?: string;
-  publishedYear?: number;
-};
-
-type BookDetailProps = {
-  book: Book;
-};
+import { BookDetailProps } from "./BookDetail.types";
 
 export function BookDetail({ book }: BookDetailProps) {
   return (

@@ -8,44 +8,7 @@ import { FormTagInput } from "../FormTagInput/FormTagInput";
 import { FormCheckbox } from "../FormCheckbox/FormCheckbox";
 import { FormSection } from "../FormSection/FormSection";
 import styles from "./BookForm.module.css";
-
-type Category = {
-    name: string;
-    displayName: string;
-    primary: boolean;
-};
-
-type ImageEntry = {
-    url: string;
-    isPrimary: boolean;
-};
-
-type AdditionalAttribute = {
-    attributeName: string;
-    attributeValue: string;
-    displayAttribute: boolean;
-};
-
-type BookFormData = {
-    title: string;
-    shortDescription: string;
-    longDescription: string;
-    isbn: string;
-    label: string;
-    tags: string[];
-    price: {
-        value: number | "";
-        currency: string;
-        uom: string;
-    };
-    inventory: {
-        quantity: number | "";
-        active: boolean;
-    };
-    categories: Category[];
-    images: ImageEntry[];
-    additional_attributes: AdditionalAttribute[];
-};
+import { Category, ImageEntry, AdditionalAttribute, BookFormData } from "./BookForm.types";
 
 const initialFormData: BookFormData = {
     title: "",

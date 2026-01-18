@@ -8,41 +8,7 @@ import { FormTagInput } from "../FormTagInput/FormTagInput";
 import { FormCheckbox } from "../FormCheckbox/FormCheckbox";
 import { FormSection } from "../FormSection/FormSection";
 import styles from "./BundleForm.module.css";
-
-type Category = {
-    name: string;
-    displayName: string;
-    primary: boolean;
-};
-
-type ImageEntry = {
-    url: string;
-    isPrimary: boolean;
-};
-
-type AdditionalAttribute = {
-    attributeName: string;
-    attributeValue: string;
-    displayAttribute: boolean;
-};
-
-type BundleFormData = {
-    title: string;
-    shortDescription: string;
-    longDescription: string;
-    label: string;
-    tags: string[];
-    active: boolean;
-    price: {
-        value: number | "";
-        currency: string;
-        uom: string;
-    };
-    categories: Category[];
-    images: ImageEntry[];
-    books: string[];
-    additional_attributes: AdditionalAttribute[];
-};
+import { Category, ImageEntry, AdditionalAttribute, BundleFormData } from "./BundleForm.types";
 
 const initialFormData: BundleFormData = {
     title: "",

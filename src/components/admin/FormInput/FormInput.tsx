@@ -1,15 +1,5 @@
 import styles from "./FormInput.module.css";
-
-type FormInputProps = {
-    label: string;
-    name: string;
-    type?: "text" | "number" | "url";
-    value: string | number;
-    onChange: (value: string) => void;
-    placeholder?: string;
-    required?: boolean;
-    error?: string;
-};
+import { FormInputProps } from "./FormInput.types";
 
 export function FormInput({
     label,

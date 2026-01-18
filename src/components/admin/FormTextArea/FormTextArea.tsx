@@ -1,15 +1,5 @@
 import styles from "./FormTextArea.module.css";
-
-type FormTextAreaProps = {
-    label: string;
-    name: string;
-    value: string;
-    onChange: (value: string) => void;
-    placeholder?: string;
-    required?: boolean;
-    rows?: number;
-    error?: string;
-};
+import { FormTextAreaProps } from "./FormTextArea.types";
 
 export function FormTextArea({
     label,
