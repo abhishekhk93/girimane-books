@@ -1,0 +1,109 @@
+.root {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at top left, #eef2ff 0, #ffffff 50%, #e5e7eb 100%);
+  padding: var(--space-2xl);
+  min-height: var(--banner-height-mobile);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(255, 255, 255, 0.24),
+    transparent 55%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: var(--space-md) 0 var(--space-sm);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  background-image: linear-gradient(#ffffff, #ffffff),
+    linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+  gap: 8px;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.2);
+}
+
+.hint {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .root {
+    min-height: var(--banner-height-desktop);
+    padding: var(--space-3xl) var(--space-3xl);
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+}
+
+

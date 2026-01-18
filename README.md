@@ -1,43 +1,52 @@
-# girimane-books
-FE repository - E-commerce portal to sell the books of our client - author Sri Girimane Shyamarao
+E-commerce website for a Kannada author to sell his books.
 
-## TODO / Planning
+TECH STACK
+- Next.js 14.2.35 (App Router)
+- TypeScript (progressively adopted)
+- Vanilla CSS + CSS Modules
+- Redux Toolkit for UI & cart state
+- Hybrid rendering (SSR / ISR / CSR)
 
-### Technology Stack
-- [ ] Decide on frontend framework (Next.js, React, Vue, etc.)
-- [ ] Decide on styling approach (Tailwind CSS, CSS Modules, Styled Components, etc.)
-- [ ] Decide on state management solution
+ARCHITECTURE
+- Pages are server components by default
+- Data fetching happens in server components
+- Interactive UI uses client components ("use client")
+- Redux Provider lives in app/providers.tsx
+- Backend is source of truth for cart
+- Redux holds cart UI state only
 
-### Rendering Techniques
-- [ ] Decide on rendering approach (SSR, SSG, ISR, CSR)
-- [ ] Plan which pages/components need server-side rendering
-- [ ] Plan which pages/components can be statically generated
+ROUTING
+- Home: /
+- Books listing: /books (SSR / ISR)
+- Book detail: /books/[slug]
+  Example: /books/the-journey-of-words
 
-### Project Structure
-- [ ] Define folder structure
-- [ ] Set up routing strategy
-- [ ] Plan component architecture
+FOLDER STRUCTURE
+src/
+ ├─ app/
+ │   ├─ layout.tsx
+ │   ├─ providers.tsx
+ │   ├─ page.tsx
+ │   └─ books/
+ │       ├─ page.tsx
+ │       └─ [slug]/page.tsx
+ ├─ components/
+ │   ├─ common/      (Navigation, Container, Button, etc.)
+ │   ├─ home/        (AuthorHero, EventBanner)
+ │   └─ books/       (BookGrid, BookCard)
+ ├─ lib/api.ts       (backend API abstraction)
+ ├─ store/           (Redux Toolkit store & slices)
+ └─ styles/theme.css (CSS variables)
 
-### Core Features
-- [ ] Book catalog/listing page
-- [ ] Book detail page
-- [ ] Shopping cart functionality
-- [ ] Checkout process
-- [ ] User authentication
-- [ ] Order management
+STYLING
+- Global CSS variables in styles/theme.css
+- Each component has its own .module.css file
 
-### Integration & APIs
-- [ ] Backend API endpoints planning
-- [ ] Payment gateway integration
-- [ ] Shipping/fulfillment integration (if needed)
+CURRENT STATE
+- Home page and books listing page exist
+- Books listing uses mock data
+- No auth yet
+- No backend API contracts finalized yet
 
-### UI/UX
-- [ ] Design system / theme
-- [ ] Responsive design approach
-- [ ] Accessibility considerations
-
-### Other
-- [ ] Environment setup (dev, staging, prod)
-- [ ] Deployment strategy
-- [ ] Testing strategy
-
+GOAL
+Add the next step here
