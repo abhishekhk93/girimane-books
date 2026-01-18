@@ -1,11 +1,10 @@
-export type Book = {
-    id: string;
-    title: string;
-    author: string;
-    price: number;
-    imageUrl: string;
-    href: string;
-    badge?: string;
+import { Book } from "../BookCard/BookCard.types";
+
+export type BooksResponse = {
+    pageNumber: number;
+    pageSize: number;
+    totalNumberOfPages: number;
+    books: Book[];
 };
 
 export type BookGridProps = {

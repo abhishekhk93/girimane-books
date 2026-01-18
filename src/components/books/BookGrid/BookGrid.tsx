@@ -15,7 +15,7 @@ export function BookGrid({ books, title, description }: BookGridProps) {
       {books.length > 0 ? (
         <div className={styles.grid}>
           {books.map((book) => (
-            <BookCard key={book.id} {...book} />
+            <BookCard key={book.bookId} book={book} />
           ))}
         </div>
       ) : (
@@ -26,5 +26,3 @@ export function BookGrid({ books, title, description }: BookGridProps) {
     </section>
   );
 }
-
-
