@@ -1,0 +1,234 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl) 0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    background: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    margin: var(--space-sm) 0 0;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+    .row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.checkboxField {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: var(--space-md);
+}
+
+.bookInputRow {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-end;
+}
+
+.bookInputRow>*:first-child {
+    flex: 1;
+}
+
+.addBookButton {
+    padding: var(--space-md) var(--space-lg);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.addBookButton:hover {
+    background: #4338ca;
+}
+
+.bookList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.bookChip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+}
+
+.removeBookChip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: #92400e;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.removeBookChip:hover {
+    background: rgba(146, 64, 14, 0.2);
+}
+
+.repeatableItem {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--color-border-subtle);
+}
+
+.repeatableRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+    .repeatableRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.repeatableActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.addButton {
+    align-self: flex-start;
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: transparent;
+    border: 1px dashed var(--color-accent);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.addButton:hover {
+    background: rgba(236, 72, 153, 0.05);
+}
+
+.removeButton {
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.removeButton:hover {
+    background: rgba(236, 72, 153, 0.1);
+}
+
+.radioLabel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+    cursor: pointer;
+}
+
+.radio {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--space-lg);
+}
+
+.submitButton {
+    padding: var(--space-lg) var(--space-3xl);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(236, 72, 153, 0.25);
+}
+
+.submitButton:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.35);
+}
+
+.submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+}
