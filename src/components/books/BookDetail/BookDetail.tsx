@@ -1,9 +1,8 @@
-import Image from "next/image";
 import styles from "./BookDetail.module.css";
 import { BookDetailProps } from "./BookDetail.types";
+import { ImageGallery } from "./ImageGallery";
 
 export function BookDetail({ book }: BookDetailProps) {
-  const primaryImage = book.images.find((img) => img.isPrimary) || book.images[0];
   const hasOffer = book.offers && book.offers.length > 0;
   const activeOffer = hasOffer ? book.offers[0] : null;
   const displayPrice = activeOffer
@@ -21,6 +20,13 @@ export function BookDetail({ book }: BookDetailProps) {
     (attr) => attr.isDisplayAttribute
   );
 
+  // Compute discount text for gallery
+  const discountText = activeOffer
+    ? activeOffer.offerPrice.discountType === "percentage"
+      ? `${activeOffer.offerPrice.discountValue}% OFF`
+      : `₹${activeOffer.offerPrice.discountAmount} OFF`
+    : undefined;
+
   return (
     <section className={styles.root}>
       {/* Breadcrumb */}
@@ -36,43 +42,13 @@ export function BookDetail({ book }: BookDetailProps) {
       </nav>
 
       <div className={styles.content}>
-        <div className={styles.imageSection}>
-          <div className={styles.imageWrapper}>
-            {book.label && <span className={styles.badge}>{book.label}</span>}
-            {hasOffer && (
-              <span className={styles.discount}>
-                {activeOffer?.offerPrice.discountType === "percentage"
-                  ? `${activeOffer.offerPrice.discountValue}% OFF`
-                  : `₹${activeOffer?.offerPrice.discountAmount} OFF`}
-              </span>
-            )}
-            <Image
-              src={primaryImage?.url || "/images/placeholder.jpg"}
-              alt={book.title}
-              fill
-              className={styles.image}
-              sizes="(max-width: 768px) 100vw, 400px"
-              priority
-            />
-          </div>
-          {book.images.length > 1 && (
-            <div className={styles.thumbnails}>
-              {book.images.map((img, index) => (
-                <div
-                  key={index}
-                  className={`${styles.thumbnail} ${img.isPrimary ? styles.thumbnailActive : ""}`}
-                >
-                  <Image
-                    src={img.url}
-                    alt={`${book.title} - ${index + 1}`}
-                    fill
-                    className={styles.thumbnailImage}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        {/* Client Component for interactive image gallery */}
+        <ImageGallery
+          images={book.images}
+          title={book.title}
+          label={book.label}
+          discountText={discountText}
+        />
 
         <div className={styles.detailsSection}>
           <div className={styles.header}>
