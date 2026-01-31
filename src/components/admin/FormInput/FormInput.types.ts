@@ -7,4 +7,6 @@ export type FormInputProps = {
     placeholder?: string;
     required?: boolean;
     error?: string;
+    readOnly?: boolean;
+    disabled?: boolean;
 };

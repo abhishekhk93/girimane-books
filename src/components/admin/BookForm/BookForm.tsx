@@ -259,12 +259,12 @@ export function BookForm() {
                         onChange={(value) => updatePrice("currency", value)}
                         options={CURRENCY_OPTIONS}
                     />
-                    <FormSelect
+                    <FormInput
                         label="Unit of Measure"
                         name="uom"
-                        value={formData.price.uom}
-                        onChange={(value) => updatePrice("uom", value)}
-                        options={UOM_OPTIONS}
+                        value="Each (EA)"
+                        onChange={() => { }}
+                        readOnly
                     />
                 </div>
             </FormSection>

@@ -10,6 +10,8 @@ export function FormInput({
     placeholder,
     required = false,
     error,
+    readOnly = false,
+    disabled = false,
 }: FormInputProps) {
     return (
         <div className={styles.field}>
@@ -26,6 +28,8 @@ export function FormInput({
                 placeholder={placeholder}
                 className={`${styles.input} ${error ? styles.inputError : ""}`}
                 required={required}
+                readOnly={readOnly}
+                disabled={disabled}
             />
             {error && <span className={styles.error}>{error}</span>}
         </div>
