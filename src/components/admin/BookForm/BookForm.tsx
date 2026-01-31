@@ -30,7 +30,7 @@ const initialFormData: BookFormData = {
     images: [{ url: "", isPrimary: true }],
     additional_attributes: [
         { attributeName: "Number Of Pages", attributeValue: "", displayAttribute: true },
-        { attributeName: "Author", attributeValue: "", displayAttribute: true },
+        { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", displayAttribute: true },
         { attributeName: "Year Of Publication", attributeValue: "", displayAttribute: true },
         { attributeName: "Binding", attributeValue: "Paper Back", displayAttribute: true },
         { attributeName: "Weight", attributeValue: "", displayAttribute: true },

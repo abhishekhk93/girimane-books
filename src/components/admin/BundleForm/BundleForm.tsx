@@ -27,7 +27,7 @@ const initialFormData: BundleFormData = {
     books: [],
     additional_attributes: [
         { attributeName: "Number Of Books", attributeValue: "", displayAttribute: true },
-        { attributeName: "Author", attributeValue: "", displayAttribute: true },
+        { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", displayAttribute: true },
         { attributeName: "Year Of Publication", attributeValue: "", displayAttribute: true },
         { attributeName: "Binding", attributeValue: "Paper Back", displayAttribute: true },
         { attributeName: "Weight", attributeValue: "", displayAttribute: true },
