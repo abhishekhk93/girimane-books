@@ -9,38 +9,27 @@ export function Pagination({ currentPage, totalPages, baseUrl }: PaginationProps
         return page === 1 ? baseUrl : `${baseUrl}?page=${page}`;
     };
 
-    // Generate page numbers to display
+    // Generate page numbers to display - Strictly previous, current, next
     const getPageNumbers = () => {
         const pages: (number | "...")[] = [];
-        const maxVisible = 5;
 
-        if (totalPages <= maxVisible + 2) {
-            // Show all pages if total is small
-            for (let i = 1; i <= totalPages; i++) {
-                pages.push(i);
-            }
-        } else {
-            // Always show first page
-            pages.push(1);
+        // Calculate the range of numbers to show
+        const range: number[] = [];
+        if (currentPage > 1) range.push(currentPage - 1);
+        range.push(currentPage);
+        if (currentPage < totalPages) range.push(currentPage + 1);
 
-            if (currentPage > 3) {
-                pages.push("...");
-            }
+        // Add start ellipsis if needed
+        if (range[0] > 1) {
+            pages.push("...");
+        }
 
-            // Show pages around current
-            const start = Math.max(2, currentPage - 1);
-            const end = Math.min(totalPages - 1, currentPage + 1);
+        // Add the range
+        pages.push(...range);
 
-            for (let i = start; i <= end; i++) {
-                pages.push(i);
-            }
-
-            if (currentPage < totalPages - 2) {
-                pages.push("...");
-            }
-
-            // Always show last page
-            pages.push(totalPages);
+        // Add end ellipsis if needed
+        if (range[range.length - 1] < totalPages) {
+            pages.push("...");
         }
 
         return pages;
@@ -57,11 +46,13 @@ export function Pagination({ currentPage, totalPages, baseUrl }: PaginationProps
                     className={styles.navButton}
                     aria-label="Previous page"
                 >
-                    ← Previous
+                    <span className={styles.icon}>←</span>
+                    <span className={styles.text}>Previous</span>
                 </Link>
             ) : (
                 <span className={`${styles.navButton} ${styles.disabled}`}>
-                    ← Previous
+                    <span className={styles.icon}>←</span>
+                    <span className={styles.text}>Previous</span>
                 </span>
             )}
 
@@ -93,11 +84,13 @@ export function Pagination({ currentPage, totalPages, baseUrl }: PaginationProps
                     className={styles.navButton}
                     aria-label="Next page"
                 >
-                    Next →
+                    <span className={styles.text}>Next</span>
+                    <span className={styles.icon}>→</span>
                 </Link>
             ) : (
                 <span className={`${styles.navButton} ${styles.disabled}`}>
-                    Next →
+                    <span className={styles.text}>Next</span>
+                    <span className={styles.icon}>→</span>
                 </span>
             )}
         </nav>

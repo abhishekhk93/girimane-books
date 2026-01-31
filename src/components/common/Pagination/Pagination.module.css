@@ -64,6 +64,15 @@
     user-select: none;
 }
 
+.text {
+    margin: 0 var(--space-xs);
+}
+
+.icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
 @media (max-width: 640px) {
     .pagination {
         gap: var(--space-sm);
@@ -77,5 +86,9 @@
     .pageLink {
         min-width: 36px;
         padding: var(--space-sm);
+    }
+
+    .text {
+        display: none;
     }
 }
