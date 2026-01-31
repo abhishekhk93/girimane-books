@@ -1,15 +1,5 @@
 import styles from "./FormInput.module.css";
-
-type FormInputProps = {
-    label: string;
-    name: string;
-    type?: "text" | "number" | "url";
-    value: string | number;
-    onChange: (value: string) => void;
-    placeholder?: string;
-    required?: boolean;
-    error?: string;
-};
+import { FormInputProps } from "./FormInput.types";
 
 export function FormInput({
     label,
@@ -20,6 +10,8 @@ export function FormInput({
     placeholder,
     required = false,
     error,
+    readOnly = false,
+    disabled = false,
 }: FormInputProps) {
     return (
         <div className={styles.field}>
@@ -36,6 +28,8 @@ export function FormInput({
                 placeholder={placeholder}
                 className={`${styles.input} ${error ? styles.inputError : ""}`}
                 required={required}
+                readOnly={readOnly}
+                disabled={disabled}
             />
             {error && <span className={styles.error}>{error}</span>}
         </div>

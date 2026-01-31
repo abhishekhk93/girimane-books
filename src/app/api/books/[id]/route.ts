@@ -1,115 +1,232 @@
 import { NextResponse } from "next/server";
+import { BookDetail } from "@/components/books/BookDetail/BookDetail.types";
 
 // Mock data - this would typically come from a database
-const mockBooks = [
+const mockBooks: BookDetail[] = [
     {
-        id: "1",
-        title: "The Journey of Words",
-        author: "Sri Girimane Shyamarao",
-        price: 450,
-        imageUrl: "/images/books/book-1.jpg",
-        href: "/books/1",
-        badge: "New",
-        description: "A profound exploration of language and its transformative power. This book takes readers on an enlightening journey through the evolution of words, their meanings, and their impact on human consciousness. Through captivating narratives and insightful analysis, the author reveals how words shape our reality and connect us to deeper truths.",
+        bookId: "1",
+        title: "Pashchima Ghattada Tappalinalli",
+        shortDescription:
+            "A mysterious journey deep into the rain-soaked trails of the Western Ghats.",
+        longDescription:
+            "Set against the dense forests and mist-covered hills of the Western Ghats, this story unfolds as an intense exploration of human courage, fear, and curiosity. Through vivid storytelling, the author captures the raw beauty of Malenadu while unraveling secrets hidden within its untouched landscapes.",
         isbn: "978-81-234-5678-1",
-        pages: 320,
-        language: "English",
-        publishedYear: 2023,
+        label: "New",
+        price: { value: 450, currency: "INR", uom: "EA" },
+        inventory: { quantity: 40, active: true },
+        categories: [
+            { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
+            { name: "Literature", displayName: "Literature", primary: true },
+        ],
+        images: [
+            { url: "/images/books/book1.jpg", isPrimary: true },
+            { url: "/images/books/book1-back.jpg", isPrimary: false },
+        ],
+        reviews: { totalNumberOfReviews: 124, maxRating: 5, avgRatingReceived: 4.5, comments: [] },
+        offers: [],
+        additional_attributes: [
+            { attributeName: "Number Of Pages", attributeValue: 320, isDisplayAttribute: true },
+            { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
+            { attributeName: "Year Of Publication", attributeValue: "2023", isDisplayAttribute: true },
+            { attributeName: "Binding", attributeValue: "Paper Back", isDisplayAttribute: true },
+            { attributeName: "Weight", attributeValue: "280gms", isDisplayAttribute: true },
+        ],
     },
     {
-        id: "2",
-        title: "Tales from the Heartland",
-        author: "Sri Girimane Shyamarao",
-        price: 550,
-        imageUrl: "/images/books/book-2.jpg",
-        href: "/books/2",
-        description: "Immerse yourself in the rich tapestry of stories that emerge from the heartland of India. This collection brings together timeless tales that capture the essence of rural life, traditional values, and the wisdom passed down through generations. Each story is a window into a world where simplicity meets profound insight.",
+        bookId: "2",
+        title: "Jenu Kallina Rahasya Kanive",
+        shortDescription:
+            "An intriguing mystery hidden within the rocky valleys of Malenadu.",
+        longDescription:
+            "This gripping tale takes readers into a secluded valley where nature guards an ancient secret. As events unfold, the narrative blends folklore, suspense, and local wisdom, creating a compelling mystery deeply rooted in the Malenadina landscape.",
         isbn: "978-81-234-5678-2",
-        pages: 380,
-        language: "English",
-        publishedYear: 2022,
+        price: { value: 550, currency: "INR", uom: "EA" },
+        inventory: { quantity: 25, active: true },
+        categories: [
+            { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
+            { name: "Fiction", displayName: "Fiction", primary: true },
+        ],
+        images: [{ url: "/images/books/book2.jpg", isPrimary: true }],
+        reviews: { totalNumberOfReviews: 89, maxRating: 5, avgRatingReceived: 4.2, comments: [] },
+        offers: [
+            {
+                id: "offer-2",
+                title: "10% discount",
+                description: "10% discount on Jenu Kallina Rahasya Kanive",
+                offerPrice: {
+                    value: 550,
+                    discountValue: 10,
+                    discountType: "percentage",
+                    discountAmount: 55,
+                    currency: "INR",
+                    uom: "EA",
+                    valueAfterDiscount: 495,
+                },
+            },
+        ],
+        additional_attributes: [
+            { attributeName: "Number Of Pages", attributeValue: 380, isDisplayAttribute: true },
+            { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
+            { attributeName: "Year Of Publication", attributeValue: "2022", isDisplayAttribute: true },
+            { attributeName: "Binding", attributeValue: "Paper Back", isDisplayAttribute: true },
+            { attributeName: "Weight", attributeValue: "320gms", isDisplayAttribute: true },
+        ],
     },
     {
-        id: "3",
-        title: "Echoes of Tradition",
-        author: "Sri Girimane Shyamarao",
-        price: 480,
-        imageUrl: "/images/books/book-3.jpg",
-        href: "/books/3",
-        badge: "Bestseller",
-        description: "Discover the enduring power of tradition in this compelling work that bridges the past and present. The author masterfully weaves together historical narratives, cultural practices, and contemporary reflections to show how traditions continue to resonate in modern life. A must-read for anyone seeking to understand the roots of cultural identity.",
+        bookId: "3",
+        title: "Hudugata Hudukata",
+        shortDescription:
+            "A reflective story of childhood curiosity and inner discovery.",
+        longDescription:
+            "Blending innocence with emotional depth, this narrative explores the playful yet profound journey of growing up in Malenadu. Through simple moments and meaningful encounters, the story reveals how childhood experiences shape identity and purpose.",
         isbn: "978-81-234-5678-3",
-        pages: 350,
-        language: "English",
-        publishedYear: 2023,
+        label: "Bestseller",
+        price: { value: 480, currency: "INR", uom: "EA" },
+        inventory: { quantity: 60, active: true },
+        categories: [
+            { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
+            { name: "Culture", displayName: "Culture", primary: true },
+        ],
+        images: [{ url: "/images/books/book3.jpg", isPrimary: true }],
+        reviews: { totalNumberOfReviews: 256, maxRating: 5, avgRatingReceived: 4.8, comments: [] },
+        offers: [],
+        additional_attributes: [
+            { attributeName: "Number Of Pages", attributeValue: 350, isDisplayAttribute: true },
+            { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
+            { attributeName: "Year Of Publication", attributeValue: "2023", isDisplayAttribute: true },
+            { attributeName: "Binding", attributeValue: "Hard Cover", isDisplayAttribute: true },
+            { attributeName: "Weight", attributeValue: "450gms", isDisplayAttribute: true },
+        ],
     },
     {
-        id: "4",
-        title: "Voices of the Past",
-        author: "Sri Girimane Shyamarao",
-        price: 520,
-        imageUrl: "/images/books/book-4.jpg",
-        href: "/books/4",
-        description: "Listen to the voices that have shaped our history and continue to guide us today. This remarkable collection brings to life the stories, teachings, and wisdom of ancestors, showing how their insights remain relevant in our contemporary world. A tribute to the enduring legacy of those who came before us.",
+        bookId: "4",
+        title: "Mungarina Kere",
+        shortDescription:
+            "A serene yet suspenseful tale set around a monsoon-fed lake.",
+        longDescription:
+            "As monsoon clouds gather over Malenadu, a quiet lake becomes the center of unexpected events. This story captures the rhythm of village life, blending nature, memory, and mystery into a deeply atmospheric reading experience.",
         isbn: "978-81-234-5678-4",
-        pages: 365,
-        language: "English",
-        publishedYear: 2022,
+        price: { value: 520, currency: "INR", uom: "EA" },
+        inventory: { quantity: 35, active: true },
+        categories: [
+            { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
+            { name: "History", displayName: "History", primary: true },
+        ],
+        images: [{ url: "/images/books/book4.jpg", isPrimary: true }],
+        reviews: { totalNumberOfReviews: 67, maxRating: 5, avgRatingReceived: 4.0, comments: [] },
+        offers: [],
+        additional_attributes: [
+            { attributeName: "Number Of Pages", attributeValue: 365, isDisplayAttribute: true },
+            { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
+            { attributeName: "Year Of Publication", attributeValue: "2022", isDisplayAttribute: true },
+            { attributeName: "Binding", attributeValue: "Paper Back", isDisplayAttribute: true },
+            { attributeName: "Weight", attributeValue: "300gms", isDisplayAttribute: true },
+        ],
     },
     {
-        id: "5",
-        title: "Stories of Wisdom",
-        author: "Sri Girimane Shyamarao",
-        price: 490,
-        imageUrl: "/images/books/book-5.jpg",
-        href: "/books/5",
-        description: "A treasury of wisdom stories that illuminate life's deepest truths. Through parables, anecdotes, and narratives drawn from various traditions, this book offers practical guidance for navigating life's challenges. Each story is carefully crafted to inspire reflection and personal growth.",
+        bookId: "5",
+        title: "Ondu Aaneya Sutta",
+        shortDescription:
+            "A symbolic tale revolving around an unforgettable incident.",
+        longDescription:
+            "This powerful story unfolds around a single incident that leaves a lasting impression on everyone involved. Rich in symbolism and emotional depth, it reflects the subtle complexities of human behavior within Malenadina society.",
         isbn: "978-81-234-5678-5",
-        pages: 340,
-        language: "English",
-        publishedYear: 2023,
+        label: "Trending",
+        price: { value: 490, currency: "INR", uom: "EA" },
+        inventory: { quantity: 45, active: true },
+        categories: [
+            { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
+            { name: "Philosophy", displayName: "Philosophy", primary: true },
+        ],
+        images: [{ url: "/images/books/book5.jpg", isPrimary: true }],
+        reviews: { totalNumberOfReviews: 178, maxRating: 5, avgRatingReceived: 4.6, comments: [] },
+        offers: [],
+        additional_attributes: [
+            { attributeName: "Number Of Pages", attributeValue: 340, isDisplayAttribute: true },
+            { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
+            { attributeName: "Year Of Publication", attributeValue: "2023", isDisplayAttribute: true },
+            { attributeName: "Binding", attributeValue: "Paper Back", isDisplayAttribute: true },
+            { attributeName: "Weight", attributeValue: "290gms", isDisplayAttribute: true },
+        ],
     },
     {
-        id: "6",
-        title: "The Cultural Tapestry",
-        author: "Sri Girimane Shyamarao",
-        price: 600,
-        imageUrl: "/images/books/book-6.jpg",
-        href: "/books/6",
-        badge: "Featured",
-        description: "Explore the intricate threads that weave together the rich cultural fabric of our society. This comprehensive work examines the interplay between art, literature, music, and social customs, revealing how they collectively form a vibrant cultural identity. An essential read for cultural enthusiasts and scholars alike.",
+        bookId: "6",
+        title: "Kaadu Tilisida Satyagalu",
+        shortDescription:
+            "Truths revealed through the silence and strength of the forest.",
+        longDescription:
+            "Deep within the forests of Malenadu, nature becomes the teacher. This thought-provoking narrative reveals life lessons through forest encounters, solitude, and survival, offering a profound connection between humans and the natural world.",
         isbn: "978-81-234-5678-6",
-        pages: 420,
-        language: "English",
-        publishedYear: 2024,
+        label: "Featured",
+        price: { value: 600, currency: "INR", uom: "EA" },
+        inventory: { quantity: 30, active: true },
+        categories: [
+            { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
+            { name: "Culture", displayName: "Culture", primary: true },
+        ],
+        images: [{ url: "/images/books/book6.jpg", isPrimary: true }],
+        reviews: { totalNumberOfReviews: 145, maxRating: 5, avgRatingReceived: 4.7, comments: [] },
+        offers: [],
+        additional_attributes: [
+            { attributeName: "Number Of Pages", attributeValue: 420, isDisplayAttribute: true },
+            { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
+            { attributeName: "Year Of Publication", attributeValue: "2024", isDisplayAttribute: true },
+            { attributeName: "Binding", attributeValue: "Hard Cover", isDisplayAttribute: true },
+            { attributeName: "Weight", attributeValue: "520gms", isDisplayAttribute: true },
+        ],
     },
     {
-        id: "7",
-        title: "Legacy of Words",
-        author: "Sri Girimane Shyamarao",
-        price: 470,
-        imageUrl: "/images/books/book-7.jpg",
-        href: "/books/7",
-        description: "Examine the lasting impact of words and literature on human civilization. This thoughtful exploration delves into how great works of literature have shaped societies, influenced thought, and preserved knowledge across generations. A celebration of the written word and its enduring power.",
+        bookId: "7",
+        title: "Anaatha Hakkiya Koogu",
+        shortDescription:
+            "A moving story echoing loss, resilience, and hope.",
+        longDescription:
+            "This emotionally rich narrative follows voices often unheard, portraying solitude and resilience through a deeply human lens. Rooted in Malenadina settings, the story resonates with compassion and quiet strength.",
         isbn: "978-81-234-5678-7",
-        pages: 330,
-        language: "English",
-        publishedYear: 2022,
+        price: { value: 470, currency: "INR", uom: "EA" },
+        inventory: { quantity: 50, active: true },
+        categories: [
+            { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
+            { name: "Literature", displayName: "Literature", primary: true },
+        ],
+        images: [{ url: "/images/books/book7.jpg", isPrimary: true }],
+        reviews: { totalNumberOfReviews: 92, maxRating: 5, avgRatingReceived: 4.3, comments: [] },
+        offers: [],
+        additional_attributes: [
+            { attributeName: "Number Of Pages", attributeValue: 330, isDisplayAttribute: true },
+            { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
+            { attributeName: "Year Of Publication", attributeValue: "2022", isDisplayAttribute: true },
+            { attributeName: "Binding", attributeValue: "Paper Back", isDisplayAttribute: true },
+            { attributeName: "Weight", attributeValue: "275gms", isDisplayAttribute: true },
+        ],
     },
     {
-        id: "8",
-        title: "Timeless Narratives",
-        author: "Sri Girimane Shyamarao",
-        price: 530,
-        imageUrl: "/images/books/book-8.jpg",
-        href: "/books/8",
-        description: "Journey through narratives that transcend time and place, speaking to universal human experiences. This collection of stories demonstrates how certain themes and truths remain constant across cultures and eras, offering readers a sense of connection to the broader human story.",
+        bookId: "8",
+        title: "Girikandara Estate",
+        shortDescription:
+            "A suspense-filled narrative set in a remote plantation estate.",
+        longDescription:
+            "Set within the secluded Girikandara estate, this story weaves suspense, human drama, and the quiet menace of isolation. As events unfold, the estate itself becomes a character, revealing hidden truths and unexpected turns.",
         isbn: "978-81-234-5678-8",
-        pages: 375,
-        language: "English",
-        publishedYear: 2023,
+        price: { value: 530, currency: "INR", uom: "EA" },
+        inventory: { quantity: 28, active: true },
+        categories: [
+            { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
+            { name: "Fiction", displayName: "Fiction", primary: true },
+        ],
+        images: [{ url: "/images/books/book8.jpg", isPrimary: true }],
+        reviews: { totalNumberOfReviews: 103, maxRating: 5, avgRatingReceived: 4.4, comments: [] },
+        offers: [],
+        additional_attributes: [
+            { attributeName: "Number Of Pages", attributeValue: 375, isDisplayAttribute: true },
+            { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
+            { attributeName: "Year Of Publication", attributeValue: "2023", isDisplayAttribute: true },
+            { attributeName: "Binding", attributeValue: "Paper Back", isDisplayAttribute: true },
+            { attributeName: "Weight", attributeValue: "310gms", isDisplayAttribute: true },
+        ],
     },
 ];
+
 
 type RouteParams = {
     params: {
@@ -118,13 +235,10 @@ type RouteParams = {
 };
 
 export async function GET(request: Request, { params }: RouteParams) {
-    const book = mockBooks.find((b) => b.id === params.id);
+    const book = mockBooks.find((b) => b.bookId === params.id);
 
     if (!book) {
-        return NextResponse.json(
-            { error: "Book not found" },
-            { status: 404 }
-        );
+        return NextResponse.json({ error: "Book not found" }, { status: 404 });
     }
 
     return NextResponse.json(book);

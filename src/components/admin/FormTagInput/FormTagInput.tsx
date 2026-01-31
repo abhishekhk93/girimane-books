@@ -2,15 +2,7 @@
 
 import { useState, KeyboardEvent } from "react";
 import styles from "./FormTagInput.module.css";
-
-type FormTagInputProps = {
-    label: string;
-    name: string;
-    tags: string[];
-    onChange: (tags: string[]) => void;
-    placeholder?: string;
-    required?: boolean;
-};
+import { FormTagInputProps } from "./FormTagInput.types";
 
 export function FormTagInput({
     label,

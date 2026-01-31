@@ -1,11 +1,5 @@
-import { ReactNode } from "react";
 import styles from "./FormSection.module.css";
-
-type FormSectionProps = {
-    title: string;
-    children: ReactNode;
-    description?: string;
-};
+import { FormSectionProps } from "./FormSection.types";
 
 export function FormSection({ title, children, description }: FormSectionProps) {
     return (

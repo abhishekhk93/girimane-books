@@ -1,92 +1,154 @@
-import Image from "next/image";
 import styles from "./BookDetail.module.css";
-
-type Book = {
-  id: string;
-  title: string;
-  author: string;
-  price: number;
-  imageUrl: string;
-  href: string;
-  badge?: string;
-  description?: string;
-  isbn?: string;
-  pages?: number;
-  language?: string;
-  publishedYear?: number;
-};
-
-type BookDetailProps = {
-  book: Book;
-};
+import { BookDetailProps } from "./BookDetail.types";
+import { ImageGallery } from "./ImageGallery";
 
 export function BookDetail({ book }: BookDetailProps) {
+  const hasOffer = book.offers && book.offers.length > 0;
+  const activeOffer = hasOffer ? book.offers[0] : null;
+  const displayPrice = activeOffer
+    ? activeOffer.offerPrice.valueAfterDiscount
+    : book.price.value;
+
+  // Get author from additional attributes
+  const authorAttr = book.additional_attributes.find(
+    (attr) => attr.attributeName === "Author"
+  );
+  const author = authorAttr ? String(authorAttr.attributeValue) : "";
+
+  // Filter displayable attributes
+  const displayAttributes = book.additional_attributes.filter(
+    (attr) => attr.isDisplayAttribute
+  );
+
+  // Compute discount text for gallery
+  const discountText = activeOffer
+    ? activeOffer.offerPrice.discountType === "percentage"
+      ? `${activeOffer.offerPrice.discountValue}% OFF`
+      : `₹${activeOffer.offerPrice.discountAmount} OFF`
+    : undefined;
+
   return (
     <section className={styles.root}>
+      {/* Breadcrumb */}
+      <nav className={styles.breadcrumb}>
+        {book.categories.map((cat, index) => (
+          <span key={cat.name}>
+            {index > 0 && <span className={styles.breadcrumbSep}>/</span>}
+            <span className={styles.breadcrumbItem}>{cat.displayName}</span>
+          </span>
+        ))}
+        <span className={styles.breadcrumbSep}>/</span>
+        <span className={styles.breadcrumbCurrent}>{book.title}</span>
+      </nav>
+
       <div className={styles.content}>
-        <div className={styles.imageSection}>
-          <div className={styles.imageWrapper}>
-            {book.badge && <span className={styles.badge}>{book.badge}</span>}
-            <Image
-              src={book.imageUrl}
-              alt={book.title}
-              fill
-              className={styles.image}
-              sizes="(max-width: 768px) 100vw, 400px"
-              priority
-            />
-          </div>
-        </div>
+        {/* Client Component for interactive image gallery */}
+        <ImageGallery
+          images={book.images}
+          title={book.title}
+          label={book.label}
+          discountText={discountText}
+        />
 
         <div className={styles.detailsSection}>
           <div className={styles.header}>
             <h1 className={styles.title}>{book.title}</h1>
-            <p className={styles.author}>By {book.author}</p>
+            {author && <p className={styles.author}>By {author}</p>}
           </div>
 
+          {/* Rating */}
+          <div className={styles.ratingSection}>
+            <div className={styles.rating}>
+              <span className={styles.star}>★</span>
+              <span className={styles.ratingValue}>
+                {book.reviews.avgRatingReceived.toFixed(1)}
+              </span>
+              <span className={styles.ratingMax}>/ {book.reviews.maxRating}</span>
+            </div>
+            <span className={styles.reviewCount}>
+              {book.reviews.totalNumberOfReviews} reviews
+            </span>
+          </div>
+
+          {/* Price */}
           <div className={styles.priceSection}>
-            <span className={styles.price}>₹{book.price.toLocaleString()}</span>
+            <span className={styles.price}>
+              ₹{displayPrice.toLocaleString()}
+            </span>
+            {hasOffer && (
+              <>
+                <span className={styles.originalPrice}>
+                  ₹{book.price.value.toLocaleString()}
+                </span>
+                <span className={styles.offerBadge}>
+                  {activeOffer?.title}
+                </span>
+              </>
+            )}
           </div>
 
-          {book.description && (
-            <div className={styles.descriptionSection}>
-              <h2 className={styles.sectionTitle}>Description</h2>
-              <p className={styles.description}>{book.description}</p>
+          {/* Offers list */}
+          {book.offers.length > 1 && (
+            <div className={styles.offersSection}>
+              <h3 className={styles.offersTitle}>Available Offers</h3>
+              <ul className={styles.offersList}>
+                {book.offers.map((offer) => (
+                  <li key={offer.id} className={styles.offerItem}>
+                    <span className={styles.offerIcon}>🏷️</span>
+                    <span>{offer.description}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
 
+          {/* Short Description */}
+          <p className={styles.shortDescription}>{book.shortDescription}</p>
+
+          {/* Description */}
+          <div className={styles.descriptionSection}>
+            <h2 className={styles.sectionTitle}>About this book</h2>
+            <p className={styles.description}>{book.longDescription}</p>
+          </div>
+
+          {/* Book Details */}
           <div className={styles.metaSection}>
             <h2 className={styles.sectionTitle}>Book Details</h2>
             <dl className={styles.metaList}>
-              {book.isbn && (
-                <>
-                  <dt className={styles.metaLabel}>ISBN</dt>
-                  <dd className={styles.metaValue}>{book.isbn}</dd>
-                </>
-              )}
-              {book.pages && (
-                <>
-                  <dt className={styles.metaLabel}>Pages</dt>
-                  <dd className={styles.metaValue}>{book.pages}</dd>
-                </>
-              )}
-              {book.language && (
-                <>
-                  <dt className={styles.metaLabel}>Language</dt>
-                  <dd className={styles.metaValue}>{book.language}</dd>
-                </>
-              )}
-              {book.publishedYear && (
-                <>
-                  <dt className={styles.metaLabel}>Published</dt>
-                  <dd className={styles.metaValue}>{book.publishedYear}</dd>
-                </>
-              )}
+              <dt className={styles.metaLabel}>ISBN</dt>
+              <dd className={styles.metaValue}>{book.isbn}</dd>
+              {displayAttributes.map((attr) => (
+                <div key={attr.attributeName} className={styles.metaItem}>
+                  <dt className={styles.metaLabel}>{attr.attributeName}</dt>
+                  <dd className={styles.metaValue}>{attr.attributeValue}</dd>
+                </div>
+              ))}
             </dl>
           </div>
 
+          {/* Inventory */}
+          {book.inventory.active && (
+            <div className={styles.stockInfo}>
+              {book.inventory.quantity > 10 ? (
+                <span className={styles.inStock}>In Stock</span>
+              ) : book.inventory.quantity > 0 ? (
+                <span className={styles.lowStock}>
+                  Only {book.inventory.quantity} left
+                </span>
+              ) : (
+                <span className={styles.outOfStock}>Out of Stock</span>
+              )}
+            </div>
+          )}
+
+          {/* Actions */}
           <div className={styles.actions}>
-            <button className={styles.buyButton}>Add to Cart</button>
+            <button
+              className={styles.buyButton}
+              disabled={!book.inventory.active || book.inventory.quantity === 0}
+            >
+              Add to Cart
+            </button>
             <button className={styles.wishlistButton}>Add to Wishlist</button>
           </div>
         </div>

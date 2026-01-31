@@ -1,13 +1,6 @@
 import Link from "next/link";
 import styles from "./EventBanner.module.css";
-
-type EventBannerProps = {
-  title: string;
-  subtitle: string;
-  ctaLabel: string;
-  href: string;
-  badge?: string;
-};
+import { EventBannerProps } from "./EventBanner.types";
 
 export function EventBanner({
   title,

@@ -8,44 +8,7 @@ import { FormTagInput } from "../FormTagInput/FormTagInput";
 import { FormCheckbox } from "../FormCheckbox/FormCheckbox";
 import { FormSection } from "../FormSection/FormSection";
 import styles from "./BookForm.module.css";
-
-type Category = {
-    name: string;
-    displayName: string;
-    primary: boolean;
-};
-
-type ImageEntry = {
-    url: string;
-    isPrimary: boolean;
-};
-
-type AdditionalAttribute = {
-    attributeName: string;
-    attributeValue: string;
-    displayAttribute: boolean;
-};
-
-type BookFormData = {
-    title: string;
-    shortDescription: string;
-    longDescription: string;
-    isbn: string;
-    label: string;
-    tags: string[];
-    price: {
-        value: number | "";
-        currency: string;
-        uom: string;
-    };
-    inventory: {
-        quantity: number | "";
-        active: boolean;
-    };
-    categories: Category[];
-    images: ImageEntry[];
-    additional_attributes: AdditionalAttribute[];
-};
+import { Category, ImageEntry, AdditionalAttribute, BookFormData } from "./BookForm.types";
 
 const initialFormData: BookFormData = {
     title: "",
@@ -67,7 +30,7 @@ const initialFormData: BookFormData = {
     images: [{ url: "", isPrimary: true }],
     additional_attributes: [
         { attributeName: "Number Of Pages", attributeValue: "", displayAttribute: true },
-        { attributeName: "Author", attributeValue: "", displayAttribute: true },
+        { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", displayAttribute: true },
         { attributeName: "Year Of Publication", attributeValue: "", displayAttribute: true },
         { attributeName: "Binding", attributeValue: "Paper Back", displayAttribute: true },
         { attributeName: "Weight", attributeValue: "", displayAttribute: true },
@@ -79,10 +42,8 @@ const CURRENCY_OPTIONS = [
     { value: "USD", label: "USD ($)" },
 ];
 
-const UOM_OPTIONS = [
-    { value: "EA", label: "Each (EA)" },
-    { value: "BUNDLE", label: "Bundle" },
-];
+
+
 
 const BINDING_OPTIONS = [
     { value: "Paper Back", label: "Paperback" },
@@ -296,12 +257,12 @@ export function BookForm() {
                         onChange={(value) => updatePrice("currency", value)}
                         options={CURRENCY_OPTIONS}
                     />
-                    <FormSelect
+                    <FormInput
                         label="Unit of Measure"
                         name="uom"
-                        value={formData.price.uom}
-                        onChange={(value) => updatePrice("uom", value)}
-                        options={UOM_OPTIONS}
+                        value="Each (EA)"
+                        onChange={() => { }}
+                        readOnly
                     />
                 </div>
             </FormSection>

@@ -1,19 +1,5 @@
 import styles from "./FormSelect.module.css";
-
-type Option = {
-    value: string;
-    label: string;
-};
-
-type FormSelectProps = {
-    label: string;
-    name: string;
-    value: string;
-    onChange: (value: string) => void;
-    options: Option[];
-    required?: boolean;
-    error?: string;
-};
+import { FormSelectProps } from "./FormSelect.types";
 
 export function FormSelect({
     label,

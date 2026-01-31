@@ -8,41 +8,7 @@ import { FormTagInput } from "../FormTagInput/FormTagInput";
 import { FormCheckbox } from "../FormCheckbox/FormCheckbox";
 import { FormSection } from "../FormSection/FormSection";
 import styles from "./BundleForm.module.css";
-
-type Category = {
-    name: string;
-    displayName: string;
-    primary: boolean;
-};
-
-type ImageEntry = {
-    url: string;
-    isPrimary: boolean;
-};
-
-type AdditionalAttribute = {
-    attributeName: string;
-    attributeValue: string;
-    displayAttribute: boolean;
-};
-
-type BundleFormData = {
-    title: string;
-    shortDescription: string;
-    longDescription: string;
-    label: string;
-    tags: string[];
-    active: boolean;
-    price: {
-        value: number | "";
-        currency: string;
-        uom: string;
-    };
-    categories: Category[];
-    images: ImageEntry[];
-    books: string[];
-    additional_attributes: AdditionalAttribute[];
-};
+import { Category, ImageEntry, AdditionalAttribute, BundleFormData } from "./BundleForm.types";
 
 const initialFormData: BundleFormData = {
     title: "",
@@ -61,7 +27,7 @@ const initialFormData: BundleFormData = {
     books: [],
     additional_attributes: [
         { attributeName: "Number Of Books", attributeValue: "", displayAttribute: true },
-        { attributeName: "Author", attributeValue: "", displayAttribute: true },
+        { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", displayAttribute: true },
         { attributeName: "Year Of Publication", attributeValue: "", displayAttribute: true },
         { attributeName: "Binding", attributeValue: "Paper Back", displayAttribute: true },
         { attributeName: "Weight", attributeValue: "", displayAttribute: true },
@@ -73,10 +39,8 @@ const CURRENCY_OPTIONS = [
     { value: "USD", label: "USD ($)" },
 ];
 
-const UOM_OPTIONS = [
-    { value: "EA", label: "Each (EA)" },
-    { value: "BUNDLE", label: "Bundle" },
-];
+
+
 
 const BINDING_OPTIONS = [
     { value: "Paper Back", label: "Paperback" },
@@ -325,12 +289,12 @@ export function BundleForm() {
                         onChange={(value) => updatePrice("currency", value)}
                         options={CURRENCY_OPTIONS}
                     />
-                    <FormSelect
+                    <FormInput
                         label="Unit of Measure"
                         name="uom"
-                        value={formData.price.uom}
-                        onChange={(value) => updatePrice("uom", value)}
-                        options={UOM_OPTIONS}
+                        value="Bundle"
+                        onChange={() => { }}
+                        readOnly
                     />
                 </div>
             </FormSection>

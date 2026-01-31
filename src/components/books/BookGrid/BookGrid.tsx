@@ -1,23 +1,11 @@
 import { BookCard } from "../BookCard/BookCard";
+import { Pagination } from "@/components/common/Pagination/Pagination";
 import styles from "./BookGrid.module.css";
+import { BookGridProps } from "./BookGrid.types";
 
-type Book = {
-  id: string;
-  title: string;
-  author: string;
-  price: number;
-  imageUrl: string;
-  href: string;
-  badge?: string;
-};
+export function BookGrid({ books, title, description, currentPage, totalPages }: BookGridProps) {
+  const showPagination = currentPage !== undefined && totalPages !== undefined && totalPages > 1;
 
-type BookGridProps = {
-  books: Book[];
-  title?: string;
-  description?: string;
-};
-
-export function BookGrid({ books, title, description }: BookGridProps) {
   return (
     <section className={styles.root}>
       {(title || description) && (
@@ -30,7 +18,7 @@ export function BookGrid({ books, title, description }: BookGridProps) {
       {books.length > 0 ? (
         <div className={styles.grid}>
           {books.map((book) => (
-            <BookCard key={book.id} {...book} />
+            <BookCard key={book.bookId} book={book} />
           ))}
         </div>
       ) : (
@@ -38,8 +26,14 @@ export function BookGrid({ books, title, description }: BookGridProps) {
           <p className={styles.emptyText}>No books found</p>
         </div>
       )}
+
+      {showPagination && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          baseUrl="/books"
+        />
+      )}
     </section>
   );
 }
-
-
