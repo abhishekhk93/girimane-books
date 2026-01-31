@@ -11,4 +11,6 @@ export type BookGridProps = {
     books: Book[];
     title?: string;
     description?: string;
+    currentPage?: number;
+    totalPages?: number;
 };

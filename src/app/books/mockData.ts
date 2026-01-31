@@ -180,7 +180,7 @@ export const mockBooksPage6: BooksResponse = {
     books: generatePageBooks(6),
 };
 
-// Page 7 Mock Response
+// Page 7 Mock Response (Books 61-70)
 export const mockBooksPage7: BooksResponse = {
     pageNumber: 7,
     pageSize: 10,
@@ -190,3 +190,20 @@ export const mockBooksPage7: BooksResponse = {
 
 // Default export (Page 1)
 export const mockBooksResponse = mockBooksPage1;
+
+// Utility function to get mock data for a specific page
+// This can be replaced with an API call later
+export function getMockBooksForPage(pageNumber: number): BooksResponse {
+    const pageMap: Record<number, BooksResponse> = {
+        1: mockBooksPage1,
+        2: mockBooksPage2,
+        3: mockBooksPage3,
+        4: mockBooksPage4,
+        5: mockBooksPage5,
+        6: mockBooksPage6,
+        7: mockBooksPage7,
+    };
+
+    // Return requested page or default to page 1
+    return pageMap[pageNumber] || mockBooksPage1;
+}

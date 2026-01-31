@@ -39,10 +39,8 @@ const CURRENCY_OPTIONS = [
     { value: "USD", label: "USD ($)" },
 ];
 
-const UOM_OPTIONS = [
-    { value: "EA", label: "Each (EA)" },
-    { value: "BUNDLE", label: "Bundle" },
-];
+
+
 
 const BINDING_OPTIONS = [
     { value: "Paper Back", label: "Paperback" },
