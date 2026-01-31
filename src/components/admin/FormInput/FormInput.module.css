@@ -35,6 +35,14 @@
   color: var(--color-text-muted);
 }
 
+.input:disabled,
+.input:read-only {
+  opacity: 0.6;
+  background-color: var(--color-bg-subtle);
+  cursor: not-allowed;
+  color: var(--color-text-muted);
+}
+
 .inputError {
   border-color: var(--color-accent);
 }
