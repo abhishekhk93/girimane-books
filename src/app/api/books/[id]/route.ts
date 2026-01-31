@@ -5,9 +5,11 @@ import { BookDetail } from "@/components/books/BookDetail/BookDetail.types";
 const mockBooks: BookDetail[] = [
     {
         bookId: "1",
-        title: "The Journey of Words",
-        shortDescription: "A profound exploration of language and its transformative power.",
-        longDescription: "This book takes readers on an enlightening journey through the evolution of words, their meanings, and their impact on human consciousness. Through captivating narratives and insightful analysis, the author reveals how words shape our reality and connect us to deeper truths.",
+        title: "Pashchima Ghattada Tappalinalli",
+        shortDescription:
+            "A mysterious journey deep into the rain-soaked trails of the Western Ghats.",
+        longDescription:
+            "Set against the dense forests and mist-covered hills of the Western Ghats, this story unfolds as an intense exploration of human courage, fear, and curiosity. Through vivid storytelling, the author captures the raw beauty of Malenadu while unraveling secrets hidden within its untouched landscapes.",
         isbn: "978-81-234-5678-1",
         label: "New",
         price: { value: 450, currency: "INR", uom: "EA" },
@@ -17,8 +19,8 @@ const mockBooks: BookDetail[] = [
             { name: "Literature", displayName: "Literature", primary: true },
         ],
         images: [
-            { url: "/images/books/book-1.jpg", isPrimary: true },
-            { url: "/images/books/book-1-back.jpg", isPrimary: false },
+            { url: "/images/books/book1.jpg", isPrimary: true },
+            { url: "/images/books/book1-back.jpg", isPrimary: false },
         ],
         reviews: { totalNumberOfReviews: 124, maxRating: 5, avgRatingReceived: 4.5, comments: [] },
         offers: [],
@@ -32,9 +34,11 @@ const mockBooks: BookDetail[] = [
     },
     {
         bookId: "2",
-        title: "Tales from the Heartland",
-        shortDescription: "Timeless tales capturing the essence of rural life.",
-        longDescription: "Immerse yourself in the rich tapestry of stories that emerge from the heartland of India. This collection brings together timeless tales that capture the essence of rural life, traditional values, and the wisdom passed down through generations.",
+        title: "Jenu Kallina Rahasya Kanive",
+        shortDescription:
+            "An intriguing mystery hidden within the rocky valleys of Malenadu.",
+        longDescription:
+            "This gripping tale takes readers into a secluded valley where nature guards an ancient secret. As events unfold, the narrative blends folklore, suspense, and local wisdom, creating a compelling mystery deeply rooted in the Malenadina landscape.",
         isbn: "978-81-234-5678-2",
         price: { value: 550, currency: "INR", uom: "EA" },
         inventory: { quantity: 25, active: true },
@@ -42,15 +46,13 @@ const mockBooks: BookDetail[] = [
             { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
             { name: "Fiction", displayName: "Fiction", primary: true },
         ],
-        images: [
-            { url: "/images/books/book-2.jpg", isPrimary: true },
-        ],
+        images: [{ url: "/images/books/book2.jpg", isPrimary: true }],
         reviews: { totalNumberOfReviews: 89, maxRating: 5, avgRatingReceived: 4.2, comments: [] },
         offers: [
             {
                 id: "offer-2",
                 title: "10% discount",
-                description: "10% discount on Tales from the Heartland",
+                description: "10% discount on Jenu Kallina Rahasya Kanive",
                 offerPrice: {
                     value: 550,
                     discountValue: 10,
@@ -72,9 +74,11 @@ const mockBooks: BookDetail[] = [
     },
     {
         bookId: "3",
-        title: "Echoes of Tradition",
-        shortDescription: "Bridging the past and present through cultural narratives.",
-        longDescription: "Discover the enduring power of tradition in this compelling work that bridges the past and present. The author masterfully weaves together historical narratives, cultural practices, and contemporary reflections to show how traditions continue to resonate in modern life.",
+        title: "Hudugata Hudukata",
+        shortDescription:
+            "A reflective story of childhood curiosity and inner discovery.",
+        longDescription:
+            "Blending innocence with emotional depth, this narrative explores the playful yet profound journey of growing up in Malenadu. Through simple moments and meaningful encounters, the story reveals how childhood experiences shape identity and purpose.",
         isbn: "978-81-234-5678-3",
         label: "Bestseller",
         price: { value: 480, currency: "INR", uom: "EA" },
@@ -83,9 +87,7 @@ const mockBooks: BookDetail[] = [
             { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
             { name: "Culture", displayName: "Culture", primary: true },
         ],
-        images: [
-            { url: "/images/books/book-3.jpg", isPrimary: true },
-        ],
+        images: [{ url: "/images/books/book3.jpg", isPrimary: true }],
         reviews: { totalNumberOfReviews: 256, maxRating: 5, avgRatingReceived: 4.8, comments: [] },
         offers: [],
         additional_attributes: [
@@ -98,9 +100,11 @@ const mockBooks: BookDetail[] = [
     },
     {
         bookId: "4",
-        title: "Voices of the Past",
-        shortDescription: "Stories and teachings from ancestors that remain relevant today.",
-        longDescription: "Listen to the voices that have shaped our history and continue to guide us today. This remarkable collection brings to life the stories, teachings, and wisdom of ancestors, showing how their insights remain relevant in our contemporary world.",
+        title: "Mungarina Kere",
+        shortDescription:
+            "A serene yet suspenseful tale set around a monsoon-fed lake.",
+        longDescription:
+            "As monsoon clouds gather over Malenadu, a quiet lake becomes the center of unexpected events. This story captures the rhythm of village life, blending nature, memory, and mystery into a deeply atmospheric reading experience.",
         isbn: "978-81-234-5678-4",
         price: { value: 520, currency: "INR", uom: "EA" },
         inventory: { quantity: 35, active: true },
@@ -108,9 +112,7 @@ const mockBooks: BookDetail[] = [
             { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
             { name: "History", displayName: "History", primary: true },
         ],
-        images: [
-            { url: "/images/books/book-4.jpg", isPrimary: true },
-        ],
+        images: [{ url: "/images/books/book4.jpg", isPrimary: true }],
         reviews: { totalNumberOfReviews: 67, maxRating: 5, avgRatingReceived: 4.0, comments: [] },
         offers: [],
         additional_attributes: [
@@ -123,9 +125,11 @@ const mockBooks: BookDetail[] = [
     },
     {
         bookId: "5",
-        title: "Stories of Wisdom",
-        shortDescription: "A treasury of wisdom stories illuminating life's deepest truths.",
-        longDescription: "A treasury of wisdom stories that illuminate life's deepest truths. Through parables, anecdotes, and narratives drawn from various traditions, this book offers practical guidance for navigating life's challenges.",
+        title: "Ondu Aaneya Sutta",
+        shortDescription:
+            "A symbolic tale revolving around an unforgettable incident.",
+        longDescription:
+            "This powerful story unfolds around a single incident that leaves a lasting impression on everyone involved. Rich in symbolism and emotional depth, it reflects the subtle complexities of human behavior within Malenadina society.",
         isbn: "978-81-234-5678-5",
         label: "Trending",
         price: { value: 490, currency: "INR", uom: "EA" },
@@ -134,40 +138,9 @@ const mockBooks: BookDetail[] = [
             { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
             { name: "Philosophy", displayName: "Philosophy", primary: true },
         ],
-        images: [
-            { url: "/images/books/book-5.jpg", isPrimary: true },
-        ],
+        images: [{ url: "/images/books/book5.jpg", isPrimary: true }],
         reviews: { totalNumberOfReviews: 178, maxRating: 5, avgRatingReceived: 4.6, comments: [] },
-        offers: [
-            {
-                id: "offer-5a",
-                title: "15% off",
-                description: "15% discount on Stories of Wisdom",
-                offerPrice: {
-                    value: 490,
-                    discountValue: 15,
-                    discountType: "percentage",
-                    discountAmount: 73.5,
-                    currency: "INR",
-                    uom: "EA",
-                    valueAfterDiscount: 416.5,
-                },
-            },
-            {
-                id: "offer-5b",
-                title: "₹100 off on bundle",
-                description: "₹100 off when bought with any other book",
-                offerPrice: {
-                    value: 490,
-                    discountValue: 100,
-                    discountType: "flat",
-                    discountAmount: 100,
-                    currency: "INR",
-                    uom: "EA",
-                    valueAfterDiscount: 390,
-                },
-            },
-        ],
+        offers: [],
         additional_attributes: [
             { attributeName: "Number Of Pages", attributeValue: 340, isDisplayAttribute: true },
             { attributeName: "Author", attributeValue: "Sri Girimane Shyamarao", isDisplayAttribute: true },
@@ -178,9 +151,11 @@ const mockBooks: BookDetail[] = [
     },
     {
         bookId: "6",
-        title: "The Cultural Tapestry",
-        shortDescription: "Exploring the intricate threads of our cultural fabric.",
-        longDescription: "Explore the intricate threads that weave together the rich cultural fabric of our society. This comprehensive work examines the interplay between art, literature, music, and social customs, revealing how they collectively form a vibrant cultural identity.",
+        title: "Kaadu Tilisida Satyagalu",
+        shortDescription:
+            "Truths revealed through the silence and strength of the forest.",
+        longDescription:
+            "Deep within the forests of Malenadu, nature becomes the teacher. This thought-provoking narrative reveals life lessons through forest encounters, solitude, and survival, offering a profound connection between humans and the natural world.",
         isbn: "978-81-234-5678-6",
         label: "Featured",
         price: { value: 600, currency: "INR", uom: "EA" },
@@ -189,9 +164,7 @@ const mockBooks: BookDetail[] = [
             { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
             { name: "Culture", displayName: "Culture", primary: true },
         ],
-        images: [
-            { url: "/images/books/book-6.jpg", isPrimary: true },
-        ],
+        images: [{ url: "/images/books/book6.jpg", isPrimary: true }],
         reviews: { totalNumberOfReviews: 145, maxRating: 5, avgRatingReceived: 4.7, comments: [] },
         offers: [],
         additional_attributes: [
@@ -204,9 +177,11 @@ const mockBooks: BookDetail[] = [
     },
     {
         bookId: "7",
-        title: "Legacy of Words",
-        shortDescription: "Examining the lasting impact of literature on civilization.",
-        longDescription: "Examine the lasting impact of words and literature on human civilization. This thoughtful exploration delves into how great works of literature have shaped societies, influenced thought, and preserved knowledge across generations.",
+        title: "Anaatha Hakkiya Koogu",
+        shortDescription:
+            "A moving story echoing loss, resilience, and hope.",
+        longDescription:
+            "This emotionally rich narrative follows voices often unheard, portraying solitude and resilience through a deeply human lens. Rooted in Malenadina settings, the story resonates with compassion and quiet strength.",
         isbn: "978-81-234-5678-7",
         price: { value: 470, currency: "INR", uom: "EA" },
         inventory: { quantity: 50, active: true },
@@ -214,9 +189,7 @@ const mockBooks: BookDetail[] = [
             { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
             { name: "Literature", displayName: "Literature", primary: true },
         ],
-        images: [
-            { url: "/images/books/book-7.jpg", isPrimary: true },
-        ],
+        images: [{ url: "/images/books/book7.jpg", isPrimary: true }],
         reviews: { totalNumberOfReviews: 92, maxRating: 5, avgRatingReceived: 4.3, comments: [] },
         offers: [],
         additional_attributes: [
@@ -229,9 +202,11 @@ const mockBooks: BookDetail[] = [
     },
     {
         bookId: "8",
-        title: "Timeless Narratives",
-        shortDescription: "Narratives that transcend time and speak to universal experiences.",
-        longDescription: "Journey through narratives that transcend time and place, speaking to universal human experiences. This collection of stories demonstrates how certain themes and truths remain constant across cultures and eras.",
+        title: "Girikandara Estate",
+        shortDescription:
+            "A suspense-filled narrative set in a remote plantation estate.",
+        longDescription:
+            "Set within the secluded Girikandara estate, this story weaves suspense, human drama, and the quiet menace of isolation. As events unfold, the estate itself becomes a character, revealing hidden truths and unexpected turns.",
         isbn: "978-81-234-5678-8",
         price: { value: 530, currency: "INR", uom: "EA" },
         inventory: { quantity: 28, active: true },
@@ -239,9 +214,7 @@ const mockBooks: BookDetail[] = [
             { name: "All Books", displayName: "All Books / ಎಲ್ಲಾ ಪುಸ್ತಕಗಳು", primary: true },
             { name: "Fiction", displayName: "Fiction", primary: true },
         ],
-        images: [
-            { url: "/images/books/book-8.jpg", isPrimary: true },
-        ],
+        images: [{ url: "/images/books/book8.jpg", isPrimary: true }],
         reviews: { totalNumberOfReviews: 103, maxRating: 5, avgRatingReceived: 4.4, comments: [] },
         offers: [],
         additional_attributes: [
@@ -253,6 +226,7 @@ const mockBooks: BookDetail[] = [
         ],
     },
 ];
+
 
 type RouteParams = {
     params: {
